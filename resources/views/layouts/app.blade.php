@@ -4,15 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>FakeInsta</title>
+        <title>FakeInsta - @yield('titulo')</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Bootstrap CSS -->
+        <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wh+yl+TZB+Yq+Z/cNT+GPyMbXQc2+WD1OxxE4MhzWdtDSpyaQ/ax1zKlhB7JmGSy" crossorigin="anonymous">
-
+        <!-- CSS -->
+        <link href="style.css" rel="stylesheet">
     </head>
     <body class="bg-light">
         <header class="py-3 border-bottom bg-white shadow-sm">
@@ -20,9 +17,9 @@
                 <h1 class="h3 font-weight-bold">
                     FakeInsta
                 </h1>
-                <nav class="d-flex gap-2 align-items-center">
+                <div class="d-flex gap-2 align-items-right">
                     <a class="fw-bold text-uppercase" href="#">Login</a>
-                    <a class="fw-bold text-uppercase" href="#">Crear Cuenta</a>
+                    <a class="fw-bold text-uppercase" href="/account">Crear Cuenta</a>
                 </nav>
             </div>
         </header>
@@ -30,6 +27,7 @@
             <h2 class="fw-bold text-center display-5">
                 @yield('titulo')
             </h2>
+            <hr>
             @yield('contenido')
         </main>
         <footer class="fw-bold text-center py-3">
