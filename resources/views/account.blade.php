@@ -9,7 +9,8 @@
             <p>Imagen aqui</p>
         </div>
         <div class="w-50">
-            <form>
+            <form action={{route('register')}} method="POST">
+                 @csrf
                 <div>
                     <label for="name">Nombre</label>
                     <input id="name" name="name" type="text" placeholder="Tu nombre" class="border">
