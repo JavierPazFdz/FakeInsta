@@ -17,11 +17,22 @@
                 <h1 class="h3 font-weight-bold">
                     FakeInsta
                 </h1>
-                <div class="d-flex gap-2 align-items-right">
-                    <a class="fw-bold text-uppercase" href="#">Login</a>
+            @auth
+            <nav class="d-flex gap-2 align-items-right">
+                    <a class="fw-bold" href="#">Hola, {{auth()->user()->userName}}</a>
+                <form method="POST" action="{{route('logout')}}">
+                @csrf
+                    <button type="submit" class="fw-bold">Cerrar sesión</button>
+                </form>
+            </nav>
+            @endauth
+            @guest
+                <nav class="d-flex gap-2 align-items-right">
+                    <a class="fw-bold text-uppercase" href="/login">Login</a>
                     <a class="fw-bold text-uppercase" href="/account">Crear Cuenta</a>
                 </nav>
-            </div>
+            @endguest
+
         </header>
         <main class="container mt-5">
             <h2 class="fw-bold text-center display-5">
