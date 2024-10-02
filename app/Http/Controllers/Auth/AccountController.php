@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,10 @@ class AccountController extends Controller
         return view('account');
     }
     public function store(Request $request){
+        //Modificar Request
+        $request->request->add([
+            'userName'=>Str::slug($request->userName)
+        ]);
 
         $this->validate($request,[
             'name'=>'required',
@@ -27,5 +32,16 @@ class AccountController extends Controller
             'email'=>$request->email,
             'password'=>Hash::make($request->password)
         ]);
+
+        //Autentificacion de usuario por mail y pass
+        auth()->attempt([
+            'email'=>$request->email,
+            'password'=>$request->password
+        ]);
+        //Otra forma en una linea
+        // auth()->attempt($request->only('email', 'password'));
+
+        //Redireccion
+        return redirect()->route('post.index');
     }
 }

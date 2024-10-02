@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AccountController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 Route::get('/account', [AccountController::class, 'index'])->name('register');
 Route::post('/account', [AccountController::class, 'store']);
+
+Route::get('/muro', [PostController::class, 'index'])->name('post.index');
